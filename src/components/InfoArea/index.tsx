@@ -32,6 +32,7 @@ export const InfoArea = ({
             `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}`,
         );
     };
+    
 
     return (
         <C.Container>
@@ -41,12 +42,12 @@ export const InfoArea = ({
                 <C.MonthArrow onClick={handleNextMonth}>➡</C.MonthArrow>
             </C.MonthArea>
             <C.ResumeArea>
-                <ResumeItem title="Despesas" value={expense} />
                 <ResumeItem title="Receitas" value={income} />
+                <ResumeItem title="Despesas" value={expense} />
                 <ResumeItem
                     title="Balanço"
-                    value={income - expense}
-                    color={income - expense < 0 ? 'red' : 'green'}
+                    value={Number((income - expense).toFixed(2))}
+                    color={(income - expense) < 0 ? 'red' : 'green'}
                 />
             </C.ResumeArea>
         </C.Container>
